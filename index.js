@@ -29,7 +29,7 @@ server.use(session({
 	}),
 }))
 
-server.use("/api/register", registerRouter)
+server.use("/api/", registerRouter)
 server.use("/api/users", usersRouter)
 
 server.get("/", (req, res, next) => {

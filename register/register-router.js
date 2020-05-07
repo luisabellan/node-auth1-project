@@ -6,7 +6,7 @@ const { restrict } = require("../middleware/restrict")
 
 const router = express.Router()
 
-router.post("/", async (req, res, next) => {
+router.post("/register", async (req, res, next) => {
 	try {
 		const { username } = req.body
 		const user = await Users.findBy({ username }).first()
