@@ -1,38 +1,29 @@
-const bcrypt = require("bcryptjs")
-const Users = require("../users/users-model")
+const bcrypt = require("bcryptjs");
+const Users = require("../users/users-model");
 
 function restrict() {
-	// put in variable so we can re-use it
-	const authError = {
-		message: "Invalid credentials",
-	}
-	
-	return async (req, res, next) => {
-		try {
-			const { username, password } = req.headers
-			// make sure the values aren't empty
-			if (!username || !password) {
-				return res.status(401).json(authError)
-			}
+  const authError = {
+    message: "Invalid credentials",
+  };
 
-			const user = await Users.findBy({ username }).first()
-			// make sure the user exists
-			if (!user) {
-				return res.status(401).json(authError)
-			}
+  return async (req, res, next) => {
+    try {
+      //
 
-			const passwordValid = await bcrypt.compare(password, user.password)
-			// make sure the password is correct
-			if (!passwordValid) {
-				return res.status(401).json(authError)
-			}
+      // we set `req.session.user` when the user is authenticated in `/login`.
+      // so we know if it's not set, the user isn't authenticated yet.
+      if (!req.session || !req.session.user) {
+        return res.status(401).json(authError);
+      }
 
-			// if we reach this point, the user is authenticated!
-			next()
-		} catch(err) {
-			next(err)
-		}
-	}
+      next();
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
-module.exports = restrict
+module.exports = {
+  // sessions,
+  restrict,
+};
