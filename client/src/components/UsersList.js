@@ -6,8 +6,8 @@ const initialUser = {
   password: "" 
 };
 
-const UserList = ({ users, updateUsers }) => {
-  //console.log(users);
+const UsersList = ({ users, updateUsers }) => {
+  // console.log(users);
   const [editing, setEditing] = useState(false);
   const [adding, setAdding] = useState(true);
   const [userToEdit, setUserToEdit] = useState(initialUser);
@@ -74,9 +74,10 @@ const UserList = ({ users, updateUsers }) => {
     <div className="users-wrap">
       <p>users</p>
       <ul>
+         {/* {console.log(users)} */}
         {users.map(user => (
-          <li key={user.user} onClick={() => editUser(user)}>
-            <span>
+          <li key={user.id} onClick={() => editUser(user)}>
+            <span> {user.username} 
               <span className="delete" onClick={e => {
                     e.stopPropagation();
                     deleteUser(user)
@@ -86,10 +87,7 @@ const UserList = ({ users, updateUsers }) => {
               </span>{" "}
               {user.user}
             </span>
-            <div
-              className="user-box"
-              style={{ backgroundUser: user.code.hex }}
-            />
+            
           </li>
         ))}
       </ul>
@@ -100,7 +98,7 @@ const UserList = ({ users, updateUsers }) => {
         <form onSubmit={saveEdit}>
           <legend>edit user</legend>
           <label>
-            user name:
+            username:
             <input
               onChange={e =>
                 setUserToEdit({ ...userToEdit, username: e.target.value })
@@ -109,7 +107,7 @@ const UserList = ({ users, updateUsers }) => {
             />
           </label>
           <label>
-            hex code:
+            password:
             <input
               onChange={e =>
                 setUserToEdit({
@@ -134,7 +132,7 @@ const UserList = ({ users, updateUsers }) => {
       <form className="myForm" onSubmit={addUser}>
           <legend>add user</legend>
           <label>
-            user name:
+            username:
             <input
               onChange={e =>
                 setUserToAdd({
@@ -167,4 +165,4 @@ const UserList = ({ users, updateUsers }) => {
   );
 };
 
-export default UserList;
+export default UsersList;

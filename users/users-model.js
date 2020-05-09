@@ -26,9 +26,15 @@ function findById(id) {
 		.first()
 }
 
+function deleteUser(id) {
+	return db("users").where({id})
+	
+}
+
 module.exports = {
 	add,
 	find,
 	findBy,
 	findById,
+	deleteUser
 }

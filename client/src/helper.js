@@ -17,8 +17,7 @@ export const DisplayFormikState = props =>
 
 export const MoreResources = props =>
   <div>
-    <hr style={{ margin: '3rem 0' }} />
-    <h3>More Examples</h3>
+    
    
    
   </div>;
