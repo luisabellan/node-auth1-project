@@ -5,7 +5,7 @@ const { restrict } = require("../middleware/restrict")
 const router = express.Router()
 
 
-router.get("/", async (req, res, next) => {
+router.get("/", restrict(),  async (req, res, next) => {
 	try {
 		res.status(200).json(await Users.find())
 	} catch(err) {

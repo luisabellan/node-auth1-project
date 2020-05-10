@@ -26,15 +26,12 @@ function findById(id) {
 		.first()
 }
 
-router.delete("/:id", async (req, res, next) => {
-	try {
+
+async function deleteUser(id) { 
 	// translates to `DELETE FROM "cars" WHERE "id" = ?;`
 		await db("users").where("id", req.params.id).del()
 		res.status(204).end()
-	} catch (err) {
-		next(err)
-	}
-})
+}
 
 
 module.exports = {
