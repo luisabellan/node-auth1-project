@@ -45,5 +45,12 @@ router.post("/login", async (req, res, next) => {
 })
 
 
+router.delete("/:id", async (req, res, next) => {
+	try {
+	res.status(204).json(Users.deleteUser())
+	} catch (err) {
+		next(err)
+	}
+})
 
 module.exports = router
