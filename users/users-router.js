@@ -7,10 +7,19 @@ const router = express.Router()
 
 router.get("/", async (req, res, next) => {
 	try {
-		res.json(await Users.find())
+		res.status(200).json(await Users.find())
 	} catch(err) {
 		next(err)
 	}
 })
+
+router.delete("/:id", async (req, res, next) => {
+	try {
+	res.status(204).json(Users.deleteUser())
+	} catch (err) {
+		next(err)
+	}
+})
+
 
 module.exports = router
