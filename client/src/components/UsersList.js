@@ -83,7 +83,7 @@ const UsersList = ({ users, updateUsers }) => {
                     deleteUser(user)
                   }
                 }>
-                  x
+                {"  "}DELETE
               </span>{" "}
               {user.user}
             </span>

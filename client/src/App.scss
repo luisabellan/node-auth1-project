@@ -51,6 +51,11 @@ body,
 
 .delete {
   color: rgb(216, 87, 87);
+  cursor: default;
+}
+.delete:hover {
+  cursor: pointer;
+
 }
 
 .color-box {
