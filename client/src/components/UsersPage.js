@@ -3,12 +3,13 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 // import Bubbles from "./Bubbles";
 import UsersList from "./UsersList";
 
+
 const UsersPage = () => {
   const [usersList, setUsersList] = useState([]);
   // fetch your colors data from the server when the component mounts
 
   useEffect(() => {
-    // make a GET request to fetch the color data for your bubbles
+    // make a GET request  fetch the users data 
     axiosWithAuth()
       .get("/users")
       .then(res => {
@@ -26,10 +27,7 @@ const UsersPage = () => {
     <>
       <UsersList users={usersList} updateUsers={setUsersList} />
       {/* <Bubbles users={usersList} /> */}
-      <button onClick={
-        
-
-      }>Log out</button>
+   
 
     </>
   );
