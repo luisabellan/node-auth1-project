@@ -13,6 +13,25 @@ const UsersList = ({ users, updateUsers }) => {
   const [userToEdit, setUserToEdit] = useState(initialUser);
   const [userToAdd, setUserToAdd] = useState(initialUser);
 
+
+  const logout = () => {
+   
+
+    console.log("logout")
+    
+    // logout user 
+    axiosWithAuth()    
+      .put(`/users/logout}`)
+    /*   .then(res => {
+        //setUserToEdit(userToEdit);
+       //logout()
+        
+      }) */
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   const editUser = user => {
     setEditing(true);
     setUserToEdit(user);
@@ -124,7 +143,14 @@ const UsersList = ({ users, updateUsers }) => {
           </div>
         </form>
       )}
+      <button onClick={(props) => {
+        localStorage.removeItem('token')
+        window.location.replace("/users")
+
+      }
+        }>LOG OUT</button>
       <div className="spacer" />
+
       {/* stretch - build another form here to add a user */}
       
       {!adding && (
