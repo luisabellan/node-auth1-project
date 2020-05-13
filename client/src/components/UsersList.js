@@ -106,7 +106,7 @@ const UsersList = ({ users, updateUsers }) => {
               value={userToEdit.username}
             />
           </label>
-         {/*  <label>
+           <label>
             password:
             <input
               onChange={e =>
@@ -117,7 +117,7 @@ const UsersList = ({ users, updateUsers }) => {
               }
               value={userToEdit.password}
             />
-          </label> */}
+          </label> 
           <div className="button-row">
             <button  type="submit">save</button>
             <button onClick={() => setEditing(false)}>cancel</button>
