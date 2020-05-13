@@ -27,17 +27,23 @@ function findById(id) {
 }
 
 
-async function deleteUser(id) { 
-	// translates to `DELETE FROM "cars" WHERE "id" = ?;`
-		await db("users").where("id", req.params.id).del()
-		res.status(204).end()
+
+function update(id, changes) {
+	return db('users')
+		.where({ id })
+		.update(changes);
 }
 
-
+function deleteUser(id) {
+	return db('users')
+		.where('id', id)
+		.del();
+}
 module.exports = {
 	add,
 	find,
 	findBy,
 	findById,
-	deleteUser
+	deleteUser,
+	update
 }

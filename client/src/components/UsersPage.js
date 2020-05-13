@@ -26,6 +26,10 @@ const UsersPage = () => {
     <>
       <UsersList users={usersList} updateUsers={setUsersList} />
       {/* <Bubbles users={usersList} /> */}
+      <button onClick={
+        
+
+      }>Log out</button>
 
     </>
   );

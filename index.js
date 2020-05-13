@@ -9,7 +9,7 @@ const usersRouter = require("./users/users-router")
 const dbConfig = require("./database/config")
 
 const server = express()
-const port = process.env.PORT
+const port = process.env.PORT || 5000
 
 server.use(cors())
 server.use(helmet())
@@ -18,7 +18,7 @@ server.use(session({
 	name: "token", // overwrites the default cookie name, hides our stack better
 	resave: false, // avoid recreating sessions that have not changes
 	saveUninitialized: false, // GDPR laws against setting cookies automatically
-	secret: process.env.COOKIE_SECRET, // cryptographically sign the cookie
+	secret: process.env.COOKIE_SECRET || "La vida es sueño", // cryptographically sign the cookie
 	cookie: {
 		httpOnly: true, // disallow javascript from reading our cookie contents
 	// 	maxAge: 15 * 1000, // expire the cookie after 15 seconds
@@ -46,5 +46,5 @@ server.use((err, req, res, next) => {
 })
 
 server.listen(port, () => {
-	console.log(`Running at http://localhost:${port}`)
+	console.log(`Running at http://localhost:${process.env.PORT || 5000}`)
 })

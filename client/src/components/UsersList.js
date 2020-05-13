@@ -155,7 +155,7 @@ const UsersList = ({ users, updateUsers }) => {
             />
           </label>
           <div className="button-row">
-            <button  type="submit">add</button>
+            <button type="submit">add</button>
           </div>
         </form>
       )}
